@@ -5,7 +5,7 @@ const upload=require('../cloud/multer');
 const manager_token =require('../middleware/manager.middleware')
 
 
-routes.post('/registerdata',controller.registerdata)
+
 routes.get('/login',controller.loginpage);
 routes.post('/logindata',controller.logindata);
 
@@ -15,17 +15,16 @@ routes.get('/resetpassword',controller.resetpasswordpage);
 routes.post('/resetpasswordotp',controller.resetpasswordotp);
 routes.post('/checkotp',controller.checkotp);
 routes.post('/newpassword',controller.newpassword)
-
+// OTP END
 routes.get('/dashboard',manager_token,controller.dashboard);
-routes.get('/delete/:id',manager_token,controller.deletes);
-routes.get('/update/:id',manager_token,controller.updatepage);
-routes.post('/update/:id',manager_token,upload.single('img'),controller.updates);
-routes.get('/profile',manager_token,controller.profiles)
+routes.get('/studentdataform',controller.studentdataform);
+routes.post('/studentdata',upload.single('img'),controller.studentdatapost)
+
 routes.get('/logout',(req,res)=>{
 
     res.cookie("jwt",'');
     res.clearCookie();
-    res.redirect('/admin/dashboard');
+    res.redirect('/manager/dashboard');
 })
 
 

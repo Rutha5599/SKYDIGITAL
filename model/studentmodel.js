@@ -1,13 +1,28 @@
 const mongoose = require('mongoose');
 const studentSchema = new mongoose.Schema({
-    username: {
+    studentname: {
         type: String
     },
-    email: {
+    fathername: {
         type: String
     },
-    password: {
+    studentemailid: {
         type: String
+    },
+    studentmobile:{
+        type:Number
+    },
+    fathermobile:{
+        type:Number
+    },
+    banchtime:{
+        type:String
+    },
+    course:{
+        type:String
+    },
+    addmisiondate:{
+        type:String
     },
     img:{
         type:String

@@ -20,7 +20,7 @@ const jwt = require('jsonwebtoken');
 //register post data
 
 
-module.exports.registerdata = async(req,res)=>{
+module.exports.registerdata = async (req, res) => {
 
     try {
         console.log(req.body);
@@ -35,7 +35,7 @@ module.exports.registerdata = async(req,res)=>{
                 username,
                 email,
                 password
-        });
+            });
 
             req.flash('success', 'Register Successfully')
             res.redirect('back');
@@ -52,7 +52,7 @@ module.exports.registerdata = async(req,res)=>{
 
 // login page
 
-module.exports.loginpage = async(req,res)=>{
+module.exports.loginpage = async (req, res) => {
 
     try {
         res.render('login')
@@ -65,7 +65,7 @@ module.exports.loginpage = async(req,res)=>{
 
 // login post data
 
-module.exports.logindata = async(req,res)=>{
+module.exports.logindata = async (req, res) => {
 
     var email = req.body.email
     var password = req.body.password
@@ -80,10 +80,10 @@ module.exports.logindata = async(req,res)=>{
         if (data.password == password) {
             req.flash('success', 'Loging Successfully');
 
-            console.log(data,"uuuu");
-            var token= await jwt.sign({id:data.id},process.env.key);
-            res.cookie('jwt',token,{
-                expires:new Date(Date.now()+24*60*60*1000)
+            console.log(data, "uuuu");
+            var token = await jwt.sign({ id: data.id }, process.env.key);
+            res.cookie('jwt', token, {
+                expires: new Date(Date.now() + 24 * 60 * 60 * 1000)
             })
             res.redirect('/admin/dashboard');
             console.log("login successfully");
@@ -103,11 +103,11 @@ module.exports.logindata = async(req,res)=>{
 // dashboard page
 
 
-module.exports.dashboard = async(req,res)=>{
+module.exports.dashboard = async (req, res) => {
 
     try {
         const managerdata = await manager.find();
-        res.render('dashboard',{
+        res.render('dashboard', {
             managerdata
         });
     } catch (err) {
@@ -137,7 +137,7 @@ module.exports.deletes = async (req, res) => {
 }
 
 
-module.exports.updatepage = async(req,res)=>{
+module.exports.updatepage = async (req, res) => {
     try {
         var data = await manager.findById(req.params.id)
         res.render('tables', { data });
@@ -170,52 +170,52 @@ module.exports.updates = async (req, res) => {
         })
 
     }
-        console.log(req.file);
-        if (req.file) {
+    console.log(req.file);
+    if (req.file) {
 
-            var data = await cloudinary.uploader.upload(req.file.path, { folder: 'sos' })
-            var img = data.secure_url
-            var img_id = data.public_id
-        }
-        req.body.img = img
-        req.body.img_id = img_id
-        var email = req.body.email
-        var find = await manager.findOne({ email });
+        var data = await cloudinary.uploader.upload(req.file.path, { folder: 'sos' })
+        var img = data.secure_url
+        var img_id = data.public_id
+    }
+    req.body.img = img
+    req.body.img_id = img_id
+    var email = req.body.email
+    var find = await manager.findOne({ email });
 
-        console.log(find,'mmmmmmmmm');
+    console.log(find, 'mmmmmmmmm');
 
-        if (find== null) {
+    if (find == null) {
 
-            var update = await manager.findByIdAndUpdate(req.params.id, req.body);
-            if (update) {
-                console.log("data updated successfully");
-                req.flash('success', 'Data update Successfully')
-                res.redirect('/admin/dashboard');
-            }
-            else {
-                req.flash('success', 'Data not update');
-                console.log('data not updated');
-                res.redirect('back');
-            }
+        var update = await manager.findByIdAndUpdate(req.params.id, req.body);
+        if (update) {
+            console.log("data updated successfully");
+            req.flash('success', 'Data update Successfully')
+            res.redirect('/admin/dashboard');
         }
         else {
-            console.log('updated email already exits');
-            req.flash('success', 'updated email already exits');
-            res.redirect('back')
+            req.flash('success', 'Data not update');
+            console.log('data not updated');
+            res.redirect('back');
         }
     }
-    
+    else {
+        console.log('updated email already exits');
+        req.flash('success', 'updated email already exits');
+        res.redirect('back')
+    }
+}
 
 
 
 
-module.exports.profiles = async(req,res)=>{
+
+module.exports.profiles = async (req, res) => {
 
     try {
         console.log(req.cookies);
-        var decode = await jwt.verify(req.cookies.jwt,process.env.key);
-        var data= await admin.findById(decode.id)
-        res.render('profile',{data})
+        var decode = await jwt.verify(req.cookies.jwt, process.env.key);
+        var data = await admin.findById(decode.id)
+        res.render('profile', { data })
     } catch (err) {
         console.log(err);
     }

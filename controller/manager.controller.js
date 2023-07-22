@@ -6,51 +6,6 @@ const managerjwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
 
 
-// register page
-
-
-// module.exports.registerpage = async(req,res)=>{
-//     try {
-//         res.render('register')
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
-
-
-//register post data
-
-
-module.exports.registerdata = async(req,res)=>{
-
-    try {
-        console.log(req.body);
-        var username = req.body.username
-        var email = req.body.email
-        var password = req.body.password
-
-        var finds = await student.findOne({ email });
-        console.log(finds);
-        if (finds == null) {
-            var managerdata = await student.create({
-                username,
-                email,
-                password
-        });
-
-            req.flash('success', 'Register Successfully')
-            res.redirect('back');
-        } else {
-            req.flash('success', 'Email Alread Exist')
-            res.redirect('back');
-            console.log("email already exist");
-        }
-    } catch (err) {
-        console.log(err);
-    }
-}
-
-
 // login page
 
 module.exports.loginpage = async(req,res)=>{
@@ -199,16 +154,18 @@ module.exports.newpassword = async(req,res)=>{
 }
 
 
+//OTP START END
+
+
+
 // dashboard page
 
 
 module.exports.dashboard = async(req,res)=>{
 
     try {
-        const studentdata = await manager.find();
-        res.render('manager-dashboard',{
-            studentdata
-        });
+        const studentdata = await student.find();
+        res.render('manager-dashboard',{studentdata});
     } catch (err) {
         console.log(err);
     }
@@ -216,110 +173,66 @@ module.exports.dashboard = async(req,res)=>{
 }
 
 
-module.exports.deletes = async (req, res) => {
+// studentdata forms page
 
+module.exports.studentdataform = async(req,res)=>{
     try {
-        console.log(req.params)
-        var cd = await student.findByIdAndDelete(req.params.id);
-        if (cd) {
-            console.log('data deleted successfully')
-            req.flash('success', 'Data Deleted Successfully')
-            res.redirect('back');
-        } else {
-            req.flash('success', 'Data Not Deleted')
-            console.log('data not deleted')
-        }
+        res.render('studentdataform');
     } catch (err) {
         console.log(err);
     }
-
 }
 
+// student data post
 
-module.exports.updatepage = async(req,res)=>{
+
+module.exports.studentdatapost = async(req,res)=>{
     try {
-        var data = await student.findById(req.params.id)
-        res.render('manager-tables', { data });
-    } catch (err) {
-        console.log(err);
-    }
-}
+        console.log(req.body,req.file);
+
+        var studentname = req.body.studentname
+        var fathername = req.body.fathername
+        var studentemailid = req.body.studentemailid
+        var studentmobile = req.body.studentmobile
+        var fathermobile = req.body.fathermobile
+        var banchtime = req.body.banchtime
+        var course = req.body.course
+        var addmisiondate = req.body.addmisiondate
 
 
-
-
-//user table data update
-
-
-
-module.exports.updates = async (req, res) => {
-
-    console.log(req.params, req.url)
-    console.log(req.body)
-    var data = await student.findById(req.params.id);
-    if (req.file) {
-
-        cloudinary.uploader.destroy(data.img_id, (err, result) => {
-            if (err) {
-                console.log(err);
-            }
-            else {
-                console.log(result);
-            }
-        })
-
-    }
-        console.log(req.file);
-        if (req.file) {
-
-            var data = await cloudinary.uploader.upload(req.file.path, { folder: 'sos' })
+        if(req.file){
+            var data = await cloudinary.uploader.upload(req.file.path,{folder:'sos'});
             var img = data.secure_url
             var img_id = data.public_id
         }
         req.body.img = img
         req.body.img_id = img_id
-        var email = req.body.email
-        var find = await student.findOne({ email });
 
-        console.log(find,'mmmmmmmmm');
+        var studentdata = await student.create({
+            studentname,
+            fathername,
+            studentemailid,
+            studentmobile,
+            fathermobile,
+            banchtime,
+            course,
+            addmisiondate,
+            img,
+            img_id
+        })
 
-        if (find== null) {
-
-            var update = await student.findByIdAndUpdate(req.params.id, req.body);
-            if (update) {
-                console.log("data updated successfully");
-                req.flash('success', 'Data update Successfully')
-                res.redirect('/manager/dashboard');
-            }
-            else {
-                req.flash('success', 'Data not update');
-                console.log('data not updated');
-                res.redirect('back');
-            }
+        if(studentdata){
+            console.log("data add successfully");
+            req.flash('success', 'Data add Successfully')
+            res.redirect('/manager/dashboard');
         }
-        else {
-            console.log('updated email already exits');
-            req.flash('success', 'updated email already exits');
-            res.redirect('back')
+        else{
+            req.flash('success', 'Data not add');
+            console.log('data not add');
+            res.redirect('back');
         }
-    }
-    
-
-
-
-
-module.exports.profiles = async(req,res)=>{
-
-    try {
-        console.log(req.cookies);
-        var decode = await managerjwt.verify(req.cookies.jwt,process.env.key);
-        var data= await manager.findById(decode.id)
-        res.render('manager-profile',{data})
+        
     } catch (err) {
         console.log(err);
     }
 }
-
-
-
-

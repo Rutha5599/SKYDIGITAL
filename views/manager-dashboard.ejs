@@ -55,120 +55,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-12 col-lg-8 col-xl-8">
-          <div class="card">
-            <div class="card-header">Site Traffic
-              <div class="card-action">
-                <div class="dropdown">
-                  <a href="javascript:void();" class="dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown">
-                    <i class="icon-options"></i>
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="javascript:void();">Action</a>
-                    <a class="dropdown-item" href="javascript:void();">Another action</a>
-                    <a class="dropdown-item" href="javascript:void();">Something else here</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="javascript:void();">Separated link</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card-body">
-              <ul class="list-inline">
-                <li class="list-inline-item"><i class="fa fa-circle mr-2 text-white"></i>New Visitor</li>
-                <li class="list-inline-item"><i class="fa fa-circle mr-2 text-light"></i>Old Visitor</li>
-              </ul>
-              <div class="chart-container-1">
-                <canvas id="chart1"></canvas>
-              </div>
-            </div>
-
-            <div class="row m-0 row-group text-center border-top border-light-3">
-              <div class="col-12 col-lg-4">
-                <div class="p-3">
-                  <h5 class="mb-0">45.87M</h5>
-                  <small class="mb-0">Overall Visitor <span> <i class="fa fa-arrow-up"></i> 2.43%</span></small>
-                </div>
-              </div>
-              <div class="col-12 col-lg-4">
-                <div class="p-3">
-                  <h5 class="mb-0">15:48</h5>
-                  <small class="mb-0">Visitor Duration <span> <i class="fa fa-arrow-up"></i> 12.65%</span></small>
-                </div>
-              </div>
-              <div class="col-12 col-lg-4">
-                <div class="p-3">
-                  <h5 class="mb-0">245.65</h5>
-                  <small class="mb-0">Pages/Visit <span> <i class="fa fa-arrow-up"></i> 5.62%</span></small>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <div class="col-12 col-lg-4 col-xl-4">
-          <div class="card">
-              <div class="card-body">
-                <div class="card-content p-2">
-                  <div class="text-center">
-                    <img src="/images/logo-icon.png" alt="logo icon">
-                  </div>
-                  <div class="card-title text-uppercase text-center py-3">Manager Register</div>
         
-        
-                  <!-- <form action="/manager/registerdata" method="POST">
-                    <div class="form-group">
-                      <label for="exampleInputName" class="sr-only">Name</label>
-                      <div class="position-relative has-icon-right">
-                        <input type="text" id="exampleInputName" name="username" class="form-control input-shadow"
-                          placeholder="Enter Your Name">
-                        <div class="form-control-position">
-                          <i class="icon-user"></i>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputEmailId" class="sr-only">Email ID</label>
-                      <div class="position-relative has-icon-right">
-                        <input type="text" id="exampleInputEmailId" name="email" class="form-control input-shadow"
-                          placeholder="Enter Your Email ID">
-                        <div class="form-control-position">
-                          <i class="icon-envelope-open"></i>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword" class="sr-only">Password</label>
-                      <div class="position-relative has-icon-right">
-                        <input type="text" id="exampleInputPassword" name="password" class="form-control input-shadow"
-                          placeholder="Choose Password">
-                        <div class="form-control-position">
-                          <i class="icon-lock"></i>
-                        </div>
-                      </div>
-                    </div>
-        
-                    <div class="form-group">
-                      <div class="icheck-material-white">
-                        <input type="checkbox" id="user-checkbox" checked="" />
-                        <label for="user-checkbox">I Agree With Terms & Conditions</label>
-                      </div>
-                    </div>
-        
-                    <button type="submit" class="btn btn-light btn-block waves-effect waves-light">Sign Up</button>       
-        
-                  </form> -->
-                </div>
-              </div>
-              <div class="card-footer text-center py-3">
-                <p class="text-warning mb-0">Already have an account? <a href=""> Sign In here</a></p>
-              </div>
-            
-            
-          </div>
-        </div>
-      </div><!--End Row-->
 
       <div class="row">
         <div class="col-12 col-lg-12">
@@ -190,57 +77,69 @@
               </div>
             </div>
             <div class="table-responsive">
-              <table class="table align-items-center table-flush table-borderless">
+              <table class="table align-items-center table-flush table-borderless" style="overflow-x: scroll;">
                 <thead>
                   <tr>
                     <th>Number</th>
-                    <th>Manager Name</th>
+                    <th>Student Name</th>
+                    <th>Father Name</th>
                     <th>Email ID</th>
-                    <th>Password</th>
-                    <th>Delete Manager</th>
-                    <th>Update Manager</th>
+                    <th>Student Mobile No.</th>
+                    <th>Father Mobile No.</th>
+                    <th>Banch Time</th>
+                    <th>Course</th>
+                    <th>Fees</th>
+                    <th>Student Image</th>
+                    <th>Addmision Date</th>
+                    <th>Student Data Update</th>
+                    <th>Student Data Delete</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <!-- <tr>
+                  <tr class="auto-stroll">
                     <% var no=1 ; for(var i of studentdata){%>
                       <tr>
                           <td>
                               <%= no++ %>
                           </td>
                           <td>
-                              <%=i.username%>
+                              <%=i.studentname%>
                           </td>
                           <td>
-                              <%=i.email%>
+                              <%=i.fathername%>
                           </td>
                           <td>
-                              <%=i.password%>
+                              <%=i.studentemailid%>
+                          </td>
+                          <td>
+                              <%=i.studentmobile%>
+                          </td>
+                          <td>
+                              <%=i.fathermobile%>
+                          </td>
+                          <td>
+                              <%=i.banchtime%>
+                          </td>
+                          <td>
+                              <%=i.course%>
+                          </td>
+                          <td>
+                              <%=i.addmisiondate%>
+                          </td>
+                          <td>
+                              <img src="<%=i.img%>" alt="" width="35px" style="border-radius: 50%;">
                           </td>
                           <td><a href="/manager/delete/<%=i.id%>" class="btn btn-primary px-2 py-1">Delete</a></td>
-                          <td><a href="/manager/update/<%=i.id%>" class="btn btn-primary px-2 py-1">Update</a></td>
-                      </tr>
+                          <td><a href="/manger/update/<%=i.id%>" class="btn btn-primary px-2 py-1">Update</a></td>
+                          
+                          </tr>
                       <%}%>
-                    </tr> -->
+                    </tr>
                 </tbody>
               </table>
             </div>
           </div>
         </div>
       </div><!--End Row-->
-
-      <!--End Dashboard Content-->
-
-      <!--start overlay-->
-      <div class="overlay toggle-menu"></div>
-      <!--end overlay-->
-
-    </div>
-    <!-- End container-fluid-->
-
-  </div><!--End content-wrapper-->
-  <!--Start Back To Top Button-->
-  <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
-  <!--End Back To Top Button-->
 
   <%-include('footer')%>
