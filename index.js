@@ -37,7 +37,7 @@ app.get('/manager',(req,res)=>{
 });
 
 app.get('/',(req,res)=>{
-    res.redirect('/user')
+    res.redirect('/student')
 })
 
 app.use((req,res)=>{
