@@ -32,15 +32,14 @@
       <div class="card card-authentication1 mb-0">
         <div class="card-body">
           <div class="card-content p-2">
-            <div class="card-title text-uppercase pb-2">Reset Password</div>
-            <p class="pb-2">Please enter your email address. You will receive a link to create a new password via email.
-            </p>
-            <form action="/manager/resetpasswordotp" method="post">
+            <div class="card-title text-uppercase pb-2">ENTER-OTP</div>
+            
+            <form action="/manager/checkotp" method="post">
             <div class="form-group">
-              <label for="exampleInputEmailAddress" class="">Email Address</label>
+              <label for="exampleInputEmailAddress" class="">OTP</label>
               <div class="position-relative has-icon-right">
-                <input type="email" name="email" id="exampleInputEmailAddress" class="form-control input-shadow"
-                  placeholder="Email Address">
+                <input type="number" name="otp" id="exampleInputEmailAddress" class="form-control input-shadow"
+                  placeholder="OTP">
                 <div class="form-control-position">
                   <i class="icon-envelope-open"></i>
                 </div>
@@ -57,9 +56,6 @@
            <p><%=messages.success%></p>
          </div>
          <%}%>
-        </div>
-        <div class="card-footer text-center py-3">
-          <p class="text-warning mb-0">Return to the <a href="/login"> Sign In</a></p>
         </div>
       </div>
     </div>

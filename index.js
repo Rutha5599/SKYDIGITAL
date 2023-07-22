@@ -26,9 +26,14 @@ app.use(express.static(path.join(__dirname,'public')))
 
 
 app.use('/admin',require('./routes/adminrouter'));
+app.use('/manager',require('./routes/managerrouter'));
 
 app.get('/admin',(req,res)=>{
     res.redirect('/admin/login')
+});
+
+app.get('/manager',(req,res)=>{
+    res.redirect('/manager/login')
 });
 
 app.get('/',(req,res)=>{

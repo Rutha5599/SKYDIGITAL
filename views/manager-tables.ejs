@@ -1,0 +1,55 @@
+<%-include('header')%>
+
+
+
+  <div class="clearfix"></div>
+
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Manager Update Data</h5>
+              <div class="table-responsive">
+                <form action="/admin/update/<%=data.id%>" method="post" enctype="multipart/form-data">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Manager Name</th>
+                        <th scope="col">Email ID</th>
+                        <th scope="col">Password</th>
+                        <th scope="col">Profile Image</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+  
+                        <td>OLD:- <%=data.username%>
+                            <input type="text" class="form-control" name="username" value="<%=data.username%>">
+                        </td>
+                        <td>OLD:- <%=data.email%>
+                            <input type="text" name="email" class="form-control" value="<%=data.email%>">
+  
+                        </td>
+                        <td>OLD:- <%=data.password%>
+                            <input type="text" name="password" class="form-control" value="<%=data.password%>">
+  
+                        </td>
+                        <td>
+                          profile<input type="file" class="form-control" name="img">
+                        </td>
+                        <td>
+                          <input type="submit" class="form-control" value="Submit">
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <%-include('footer')%>
