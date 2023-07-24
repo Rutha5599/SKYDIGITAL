@@ -92,12 +92,21 @@ module.exports.resetpasswordotp = async(req,res)=>{
 
             });
 
-            var otp = Math.round(9*8*8*8*9*9);
+            var otp = Math.round(Math.random()*9*8*9*8*9*8);
 
             var info = transport.sendMail({
                 from:"jayaaradhenterprise.info@gmail.com",
                 to:emaildata.email,
-                html:`OTP = ${otp}`
+                subject:`Forgeting Otp`,
+                html:`<div
+                class="container"
+                style="max-width: 90%; margin: auto; padding-top: 20px"
+              >
+                <h2>Welcome to the SKY DIGITAL</h2>
+                <h4>You are officially In ✔</h4>
+                <p style="margin-bottom: 30px;">Pleas enter the sign up OTP to get started</p>
+                <h1 style="font-size: 40px; letter-spacing: 2px; text-align:center;">${otp}</h1>
+           </div>`
 
             });
             if(info){
@@ -225,7 +234,7 @@ module.exports.studentdatapost = async(req,res)=>{
         var course = req.body.course
         var fees =req.body.fees
         var addmisiondate = req.body.addmisiondate
-
+        var studentpassword = req.body.studentmobile
 
         if(req.file){
             var data = await cloudinary.uploader.upload(req.file.path,{folder:'sos'});
@@ -244,6 +253,7 @@ module.exports.studentdatapost = async(req,res)=>{
             fathermobile,
             banchtime,
             course,
+            studentpassword,
             fees,
             addmisiondate,
             img,

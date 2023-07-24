@@ -1,0 +1,107 @@
+<%-include('student-header')%>
+
+<div class="clearfix"></div>
+	
+  <div class="content-wrapper">
+    <div class="container-fluid">
+
+      <div class="row mt-3">
+        <div class="col-lg-4">
+           <div class="card profile-card-2">
+            <div class="card-img-block">
+                <img class="img-fluid" src="<%=studentdata.img%>" alt="Card image cap"width="100%" height="100%" >
+            </div>
+            <div class="card-body pt-5">
+                <img src="<%=studentdata.img%>" alt="profile-image" class="profile" width="70px" height="70px">
+                <h5 class="card-title mt-2 mb-0"><%=studentdata.studentname%></h5>
+                <p class="card-text"><%=studentdata.studentmobile%></p>
+                
+            </div>
+
+        </div>
+
+        </div>
+
+        <div class="col-lg-8">
+           <div class="card">
+            <div class="card-body">
+            <ul class="nav nav-tabs nav-tabs-primary top-icon nav-justified">
+                <li class="nav-item">
+                    <a href="javascript:void();" data-target="#profile" data-toggle="pill" class="nav-link active"><i class="icon-user"></i> <span class="hidden-xs">Profile</span></a>
+                </li>
+            </ul>
+            <div class="tab-content p-3">
+                <div class="tab-pane active" id="profile">
+                    <h5 class="mb-3">Student Profile</h5>
+                    <div class="row">                        
+                        <div class="col-md-12">
+                             <div class="table-responsive">
+                            <table class="table table-hover table-striped">
+                                <tbody>                                    
+                                    <tr>
+                                        <td>
+                                            <p>Student Name:-  <%=studentdata.studentname%></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p>Father Name:-  <%=studentdata.fathername%></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p>Student Mobile:-  <%=studentdata.studentmobile%></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p>Father Mobile:-  <%=studentdata.fathermobile%></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p>Email Id:- <%=studentdata.studentemailid%></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p>Address:- <%=studentdata.studentaddress%></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p>Banch Time:- <%=studentdata.banchtime%></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p>Course:- <%=studentdata.course%></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p>Fees:- <%=studentdata.fees%></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p>Addmision Date:- <%=studentdata.addmisiondate%></p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                          </div>
+                        </div>
+                    </div>
+                    <!--/row-->
+                </div>
+                
+                
+            </div>
+        </div>
+      </div>
+      </div>
+        
+    </div>
+
+	<%-include('footer')%>

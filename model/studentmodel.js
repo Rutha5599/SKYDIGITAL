@@ -12,6 +12,9 @@ const studentSchema = new mongoose.Schema({
     studentaddress: {
         type: String
     },
+    studentpassword: {
+        type: String
+    },
     studentmobile:{
         type:Number
     },
