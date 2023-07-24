@@ -14,15 +14,23 @@ routes.post('/logindata',controller.logindata);
 routes.get('/resetpassword',controller.resetpasswordpage);
 routes.post('/resetpasswordotp',controller.resetpasswordotp);
 routes.post('/checkotp',controller.checkotp);
-routes.post('/newpassword',controller.newpassword)
+routes.post('/newpassword',controller.newpassword);
+
+
 // OTP END
 routes.get('/dashboard',manager_token,controller.dashboard);
 routes.get('/studentdataform',controller.studentdataform);
-routes.post('/studentdata',upload.single('img'),controller.studentdatapost)
+routes.post('/studentdata',manager_token,upload.single('img'),controller.studentdatapost);
+routes.get('/profiles',manager_token,controller.profiles);
+routes.get('/delete/:id',manager_token,controller.deletes);
+routes.get('/updatepage/:id',controller.updatepage);
+routes.post('/updatepage/:id',manager_token,upload.single('img'),controller.updates);
+routes.get('/studentdetails/:id',manager_token,controller.studentdetails);
+routes.post('/studentfees/:id',manager_token,controller.studentfees)
 
 routes.get('/logout',(req,res)=>{
 
-    res.cookie("jwt",'');
+    res.cookie("managerjwt",'');
     res.clearCookie();
     res.redirect('/manager/dashboard');
 })

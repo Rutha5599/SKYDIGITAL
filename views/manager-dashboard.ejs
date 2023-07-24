@@ -5,62 +5,10 @@
   <div class="content-wrapper">
     <div class="container-fluid">
 
-      <!--Start Dashboard Content-->
-
-      <div class="card mt-3">
-        <div class="card-content">
-          <div class="row row-group m-0">
-            <div class="col-12 col-lg-6 col-xl-3 border-light">
-              <div class="card-body">
-                <h5 class="text-white mb-0">9526 <span class="float-right"><i class="fa fa-shopping-cart"></i></span>
-                </h5>
-                <div class="progress my-3" style="height:3px;">
-                  <div class="progress-bar" style="width:55%"></div>
-                </div>
-                <p class="mb-0 text-white small-font">Total Orders <span class="float-right">+4.2% <i
-                      class="zmdi zmdi-long-arrow-up"></i></span></p>
-              </div>
-            </div>
-            <div class="col-12 col-lg-6 col-xl-3 border-light">
-              <div class="card-body">
-                <h5 class="text-white mb-0">8323 <span class="float-right"><i class="fa fa-usd"></i></span></h5>
-                <div class="progress my-3" style="height:3px;">
-                  <div class="progress-bar" style="width:55%"></div>
-                </div>
-                <p class="mb-0 text-white small-font">Total Revenue <span class="float-right">+1.2% <i
-                      class="zmdi zmdi-long-arrow-up"></i></span></p>
-              </div>
-            </div>
-            <div class="col-12 col-lg-6 col-xl-3 border-light">
-              <div class="card-body">
-                <h5 class="text-white mb-0">6200 <span class="float-right"><i class="fa fa-eye"></i></span></h5>
-                <div class="progress my-3" style="height:3px;">
-                  <div class="progress-bar" style="width:55%"></div>
-                </div>
-                <p class="mb-0 text-white small-font">Visitors <span class="float-right">+5.2% <i
-                      class="zmdi zmdi-long-arrow-up"></i></span></p>
-              </div>
-            </div>
-            <div class="col-12 col-lg-6 col-xl-3 border-light">
-              <div class="card-body">
-                <h5 class="text-white mb-0">5630 <span class="float-right"><i class="fa fa-envira"></i></span></h5>
-                <div class="progress my-3" style="height:3px;">
-                  <div class="progress-bar" style="width:55%"></div>
-                </div>
-                <p class="mb-0 text-white small-font">Messages <span class="float-right">+2.2% <i
-                      class="zmdi zmdi-long-arrow-up"></i></span></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        
-
       <div class="row">
         <div class="col-12 col-lg-12">
           <div class="card">
-            <div class="card-header">Recent Order Tables
+            <div class="card-header">Student Tables
               <div class="card-action">
                 <div class="dropdown">
                   <a href="javascript:void();" class="dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown">
@@ -82,15 +30,9 @@
                   <tr>
                     <th>Number</th>
                     <th>Student Name</th>
-                    <th>Father Name</th>
                     <th>Email ID</th>
                     <th>Student Mobile No.</th>
-                    <th>Father Mobile No.</th>
-                    <th>Banch Time</th>
-                    <th>Course</th>
-                    <th>Fees</th>
-                    <th>Student Image</th>
-                    <th>Addmision Date</th>
+                    <th>Student Details</th>
                     <th>Student Data Update</th>
                     <th>Student Data Delete</th>
                   </tr>
@@ -98,42 +40,25 @@
                 <tbody>
                   <tr class="auto-stroll">
                     <% var no=1 ; for(var i of studentdata){%>
-                      <tr>
-                          <td>
-                              <%= no++ %>
-                          </td>
-                          <td>
-                              <%=i.studentname%>
-                          </td>
-                          <td>
-                              <%=i.fathername%>
-                          </td>
-                          <td>
-                              <%=i.studentemailid%>
-                          </td>
-                          <td>
-                              <%=i.studentmobile%>
-                          </td>
-                          <td>
-                              <%=i.fathermobile%>
-                          </td>
-                          <td>
-                              <%=i.banchtime%>
-                          </td>
-                          <td>
-                              <%=i.course%>
-                          </td>
-                          <td>
-                              <%=i.addmisiondate%>
-                          </td>
-                          <td>
-                              <img src="<%=i.img%>" alt="" width="35px" style="border-radius: 50%;">
-                          </td>
-                          <td><a href="/manager/delete/<%=i.id%>" class="btn btn-primary px-2 py-1">Delete</a></td>
-                          <td><a href="/manger/update/<%=i.id%>" class="btn btn-primary px-2 py-1">Update</a></td>
-                          
-                          </tr>
-                      <%}%>
+                  <tr>
+                    <td>
+                      <%= no++ %>
+                    </td>
+                    <td>
+                      <%=i.studentname%>
+                    </td>
+                    <td>
+                      <%=i.studentemailid%>
+                    </td>
+                    <td>
+                      <%=i.studentmobile%>
+                    </td>
+                    <td><a href="/manager/studentdetails/<%=i.id%>" class="btn btn-primary px-5 py-1">Details</a></td>
+                    <td><a href="/manager/delete/<%=i.id%>" class="btn btn-primary px-5 py-1">Delete</a></td>
+                    <td><a href="/manager/updatepage/<%=i.id%>" class="btn btn-primary px-5 py-1">Update</a></td>
+
+                  </tr>
+                  <%}%>
                     </tr>
                 </tbody>
               </table>
@@ -141,5 +66,6 @@
           </div>
         </div>
       </div><!--End Row-->
-
+    </div>
+  </div>
   <%-include('footer')%>

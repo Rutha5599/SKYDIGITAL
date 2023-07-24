@@ -1,4 +1,4 @@
-<%-include('header')%>
+<%-include('manager-header')%>
 
 <div class="clearfix"></div>
 	
@@ -9,12 +9,12 @@
         <div class="col-lg-4">
            <div class="card profile-card-2">
             <div class="card-img-block">
-                <img class="img-fluid" src="https://via.placeholder.com/800x500" alt="Card image cap">
+                <img class="img-fluid" src="<%=managerporfiles.img%>" alt="Card image cap">
             </div>
             <div class="card-body pt-5">
-                <img src="https://via.placeholder.com/110x110" alt="profile-image" class="profile">
-                <h5 class="card-title"><%=data.username%></h5>
-                <p class="card-text">Email id:- <%=data.email%></p>
+                <img src="<%=managerporfiles.img%>" alt="profile-image" class="profile" width="70px">
+                <h5 class="card-title mt-2 mb-0"><%=managerporfiles.username%></h5>
+                <p class="card-text">Emai:- <%=managerporfiles.email%></p>
                 <div class="icon-block">
                   <a href="javascript:void();"><i class="fa fa-facebook bg-facebook text-white"></i></a>
 				  <a href="javascript:void();"> <i class="fa fa-twitter bg-twitter text-white"></i></a>

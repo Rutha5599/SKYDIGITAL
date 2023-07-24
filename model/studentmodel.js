@@ -9,6 +9,9 @@ const studentSchema = new mongoose.Schema({
     studentemailid: {
         type: String
     },
+    studentaddress: {
+        type: String
+    },
     studentmobile:{
         type:Number
     },
@@ -22,6 +25,9 @@ const studentSchema = new mongoose.Schema({
         type:String
     },
     addmisiondate:{
+        type:String
+    },
+    fees:{
         type:String
     },
     img:{
