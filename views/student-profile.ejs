@@ -1,142 +1,465 @@
 <%-include('manager-header')%>
 
-<div class="clearfix"></div>
-	
-  <div class="content-wrapper">
-    <div class="container-fluid">
+    <div class="clearfix"></div>
 
-      <div class="row mt-3">
-        <div class="col-lg-4">
-           <div class="card profile-card-2">
-            <div class="card-img-block">
-                <img class="img-fluid" src="<%=datastudent.img%>" alt="Card image cap"width="100%" height="100%" >
-            </div>
-            <div class="card-body pt-5">
-                <img src="<%=datastudent.img%>" alt="profile-image" class="profile" width="70px" height="70px">
-                <h5 class="card-title mt-2 mb-0"><%=datastudent.studentname%></h5>
-                <p class="card-text"><%=datastudent.studentmobile%></p>
-                
-            </div>
+    <div class="content-wrapper">
+        <div class="container-fluid">
 
-        </div>
+            <div class="row mt-3">
+                <div class="col-lg-4">
+                    <div class="card profile-card-2">
+                        <div class="card-img-block">
+                            <img class="img-fluid" src="<%=datastudent.img%>" alt="Card image cap" width="100%"
+                                height="100%">
+                        </div>
+                        <div class="card-body pt-5">
+                            <img src="<%=datastudent.img%>" alt="profile-image" class="profile" width="70px"
+                                height="70px">
+                            <h5 class="card-title mt-2 mb-0">
+                                <%=datastudent.studentname%>
+                            </h5>
+                            <p class="card-text">
+                                <%=datastudent.studentmobile%>
+                            </p>
 
-        </div>
+                        </div>
 
-        <div class="col-lg-8">
-           <div class="card">
-            <div class="card-body">
-            <ul class="nav nav-tabs nav-tabs-primary top-icon nav-justified">
-                <li class="nav-item">
-                    <a href="javascript:void();" data-target="#profile" data-toggle="pill" class="nav-link active"><i class="icon-user"></i> <span class="hidden-xs">Profile</span></a>
-                </li>
-                <li class="nav-item">
-                    <a href="javascript:void();" data-target="#edit" data-toggle="pill" class="nav-link"><i class="icon-note"></i> <span class="hidden-xs">Edit</span></a>
-                </li>
-            </ul>
-            <div class="tab-content p-3">
-                <div class="tab-pane active" id="profile">
-                    <h5 class="mb-3">Student Profile</h5>
-                    <div class="row">                        
-                        <div class="col-md-12">
-                             <div class="table-responsive">
-                            <table class="table table-hover table-striped">
-                                <tbody>                                    
-                                    <tr>
-                                        <td>
-                                            <p>Student Name:-  <%=datastudent.studentname%></p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>Father Name:-  <%=datastudent.fathername%></p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>Student Mobile:-  <%=datastudent.studentmobile%></p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>Father Mobile:-  <%=datastudent.fathermobile%></p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>Email Id:- <%=datastudent.studentemailid%></p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>Address:- <%=datastudent.studentaddress%></p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>Banch Time:- <%=datastudent.banchtime%></p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>Course:- <%=datastudent.course%></p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>Fees:- <%=datastudent.fees%></p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>Addmision Date:- <%=datastudent.addmisiondate%></p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>pass:- <%=datastudent.studentpassword%></p>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                          </div>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <ul class="nav nav-tabs nav-tabs-primary top-icon nav-justified">
+                                <li class="nav-item">
+                                    <a href="javascript:void();" data-target="#profile" data-toggle="pill"
+                                        class="nav-link active"><i class="icon-user"></i> <span
+                                            class="hidden-xs">Profile</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="javascript:void();" data-target="#edit" data-toggle="pill"
+                                        class="nav-link"><i class="icon-note"></i> <span
+                                            class="hidden-xs">Edit</span></a>
+                                </li>
+                            </ul>
+                            <div class="tab-content p-3">
+                                <div class="tab-pane active" id="profile">
+                                    <h5 class="mb-3">Student Profile</h5>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="table-responsive">
+                                                <table class="table table-hover table-striped">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <p>Student Name:- <%=datastudent.studentname%>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>Father Name:- <%=datastudent.fathername%>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>Student Mobile:- <%=datastudent.studentmobile%>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>Father Mobile:- <%=datastudent.fathermobile%>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>Email Id:- <%=datastudent.studentemailid%>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>Address:- <%=datastudent.studentaddress%>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>Banch Time:- <%=datastudent.banchtime%>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>Course:- <%=datastudent.course%>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>Fees:- <%=datastudent.fees%>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>Panding-Fees:- <%=datastudent.pendingfees%>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>paid-Fees:- <%=datastudent.paidfees%>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>Addmision Date:- <%=datastudent.addmisiondate%>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>pass:- <%=datastudent.studentpassword%>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/row-->
+                                </div>
+
+                                <div class="tab-pane" id="edit">
+                                    <form action="/manager/studentfees/<%=datastudent.id%>" method="post">
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label form-control-label">Fees
+                                                Amount</label>
+                                            <div class="col-lg-9">
+                                                <input class="form-control" type="number" name="feesamount"
+                                                    placeholder="Fees Amount">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label form-control-label">Payment
+                                                Type</label>
+                                            <div class="col-lg-9">
+                                                <select name="paymenttype" id="" class="form-control">
+                                                    <option value="">--- Payment Type ---</option>
+                                                    <option value="online">Online</option>
+                                                    <option value="cheque">Cheque</option>
+                                                    <option value="cash">Cash</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label form-control-label">Date</label>
+                                            <div class="col-lg-9">
+                                                <input class="form-control" type="date" name="date">
+                                            </div>
+                                        </div>
+                                        <input type="submit" value="Submit" class="form-control">
+                                    </form>
+
+
+                                </div>
+
+                                
+
+                            </div>
                         </div>
                     </div>
-                    <!--/row-->
                 </div>
-                
-                <div class="tab-pane" id="edit">
-                    <form action="/manager/studentfees/<%=datastudent.id%>" method="post">
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Fees Amount</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" type="number" name="feesamount" placeholder="Fees Amount">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Payment Type</label>
-                            <div class="col-lg-9">
-                                <select name="paymenttype" id="" class="form-control">
-                                    <option value="">--- Payment Type ---</option>
-                                    <option value="online">Online</option>
-                                    <option value="cheque">Cheque</option>
-                                    <option value="cash">Cash</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Date</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" type="date" name="date">
-                            </div>
-                        </div>
-                        <input type="submit" value="Submit" class="form-control">
-                    </form>
-                </div>
-            </div>
-        </div>
-      </div>
-      </div>
-        
-    </div>
 
-	<%-include('footer')%>
+            </div>
+            <%if (last.length == 1){%>
+              <style>
+                @import url(https://fonts.googleapis.com/css?family=Roboto:100,300,400,900,700,500,300,100);
+               * {
+                 margin: 0;
+                 box-sizing: border-box;
+               }
+             
+              .card-body h2{
+                 font-weight: 900;
+                 font-size: 20px;
+                 padding: 30px 0 5px 0;
+               }
+               .body {
+                 background: #fff;
+                 font-family: "Roboto", sans-serif;
+                 background-size: 100%;
+                 height: 700px;
+               }
+               .body::-webkit-scrollbar {
+                 width: -0px;
+               }
+               ::selection {
+                 background: #f31544;
+                 color: #fff;
+               }
+               ::moz-selection {
+                 background: #f31544;
+                 color: #fff;
+               }
+               .body h1 {
+                 font-size: 1.5em;
+                 color: #222;
+               }
+               .body h2 {
+                 font-size: 1.5em;
+                 color:#000
+               }
+               .body h3 {
+                 font-size: 1.5em;
+                 font-weight: 300;
+                 line-height: 2em;
+               }
+               .body p {
+                 font-size: 1.3rem;
+                 color: #000;
+                 font-weight: 600;
+                 line-height: 1.4em;
+               }
+               .body #invoiceholder {
+                 width: 100%;
+                 height: 100px;
+               }
+               .body #headerimage {
+                 z-index: -1;
+                 position: relative;
+                 top: -50px;
+                 height: 350px;
+                 -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15),
+                   inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+                 -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15),
+                   inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+                 box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15),
+                   inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+                 overflow: hidden;
+                 background-attachment: fixed;
+                 background-size: 1920px 80%;
+                 background-position: 50% -90%;
+               }
+               td{
+                 font-weight: 500;
+                 font-size: 1.1rem;
+                 color: #000;
+               }
+               .body #invoice {
+                 position: relative;
+                 top: -290px;
+                 border:solid 1px;
+                 margin: 0 auto;
+                 width: 1100px;
+                 scale: 1.001;
+                 background: #fff;
+               }
+               [id*="invoice-"] {
+                 /* Targets all id with 'col-' */
+                 border-bottom: 1px solid #eee;
+                 padding: 30px;
+               }
+               .body #invoice-top {
+                 min-height: 120px;
+               }
+               .body #invoice-mid {
+                 min-height: 120px;
+               }
+               .body #invoice-bot {
+                 min-height: 250px;
+               }
+               .body .logo {
+                 float: left;
+                 height: 60px;
+                 width: 60px;
+                 /* background: url(/images/MME\ LOGO1\ \(1\).png); */
+                 background-size: 60px 60px;
+               }
+               .body .info {
+                 display: block;
+                 display: flex;
+                 float: left;
+                 flex-direction: column;
+                 margin-left: 20px;
+               }
+               .body .title {
+                 float: right;
+               }
+               .body .title p {
+                 text-align: right;
+               }
+               .body #project {
+                 margin-left: 52%;
+               }
+               .body table {
+                 width: 100%;
+                 border-collapse: collapse;
+               }
+               .body td {
+                 padding: 5px 0 5px 15px;
+                 border: 1px solid #eee;
+                 text-align: left;
+               }
+               .body .tabletitle {
+                 padding: 5px;
+                 background: #afafaf;
+               }
+               .body .service {
+                 border: 1px solid #eee;
+               }
+               .body .item {
+                 width: 50%;
+               }
+               .body .itemtext {
+                 font-size: 1.6rem;
+                 margin:0;
+                 padding: 10px;
+               }
+               .body #legalcopy {
+                 margin-top: 30px;
+               }
+               .body form {
+                 float: right;
+                 margin-top: 30px;
+                 text-align: right;
+               }
+               .body .effect2 {
+                 position: relative;
+               }
+               .body .legal {
+                 width: 70%;
+               }
+              </style>
+   
+                <a href="#" onclick="fun()" class="btn btn-danger">PFD</a>
+
+               <div class="body" style="overflow: scroll;" id="feesrecript">
+   
+                   <div id="invoiceholder">
+             
+                     <div id="headerimage"></div>
+                     <div id="invoice" class="effect2">
+             
+                       <div id="invoice-top" style="display: flex; justify-content: center; align-items: center;">
+             
+                         <img src="/images/morsy.png" height="63px" alt="">
+             
+                         <div class="info">
+                           <h2 style="font-size:48px; color: #c7242e;" class="mt-2"> Multimedia <span
+                               style="color: #135597;">&</span> Education</h2>
+                         </div><!--End Info-->
+                       </div><!--End InvoiceTop-->
+             
+             
+             
+                       <div id="invoice-mid">
+             
+                         <div class="clientlogo"></div>
+                         <div class="info">
+                           <h2>Name: <%=datastudent.studentname%>
+                           </h2>
+                           <p class="m-0">student email : <%=datastudent.studentemailid%>
+                           </p>
+                           <p class="mt-2">student phone : <%=datastudent.studentmobile%>
+                           </p>
+                         </div>
+                         
+                           <div id="project">
+                             <h2>Fees Description</h2>
+                             <p class="fs-2 m-0">Fees paid by : <%=last[0].paymenttype%>
+                             </p>
+                             <p class="mt-2">Date of paying fees : <%=last[0].date%>
+                             </p>
+                           </div>
+             
+                       </div><!--End Invoice Mid-->
+             
+                       <div id="invoice-bot">
+             
+                         <div id="table">
+                           <table>
+                             <tr class="tabletitle">
+                               <td class="item" colspan="2">
+                                 <h2>Item Description</h2>
+                               </td>
+                   
+                               <td class="subtotal"></td>
+                               <td class="subtotal">
+                                 <h2>Sub-total</h2>
+                               </td>
+                             </tr>
+             
+                             <tr class="service">
+                               <td class="tableitem" colspan="3">
+                                 <p class="itemtext">fees paid</p>
+                               </td>
+             
+                               <td class="tableitem">
+                                 <p class="itemtext">
+                                   <%=last[0].feesamount%>
+                                 </p>
+                               </td>
+                             </tr>
+                             <tr class="tabletitle">
+                               <td colspan="2" style="font-size: 1.2rem;">fees in words : <span id="fees_in_words"></span></td>
+                               <td class="Rate">
+                                 <h2 >Total :</h2>
+                               </td>
+                               <td class="payment">
+                                 <h2 id="fees_words" class="m-0" style="transform: translateX(13px);">
+                                   <%=last[0].feesamount%>
+                                 </h2>
+                               </td>
+                             </tr>
+                             <tr class="tabletitle " style="background-color: #fff !important;">
+                               <td colspan="2">
+                                 
+                               </td>
+                               <td class="Rate">
+                                 <h2 style="transform: translateY(10px);">sign :</h2>
+                               </td>
+                               <td class="payment p-3">
+                                 <h2 id="fees_words m-0" style="transform: translateY(20px);">
+                                   ________________
+                                 </h2>
+                               </td>
+                             </tr>
+                             
+                           </table>
+                         </div><!--End Table-->
+             
+                         
+                       </div><!--End InvoiceBot-->
+                     </div><!--End Invoice-->
+                   </div><!-- End Invoice Holder-->
+             
+                 </div>
+   
+                 <!-- PDF Downlod -->
+                   <script src="https://cdn.bootcss.com/html2pdf.js/0.9.1/html2pdf.bundle.js"></script>
+                   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.1/html2pdf.bundle.min.js"></script>
+           
+
+                   <script>
+                    function fun(){
+                        var recript = document.getElementById('feesrecript')
+
+                        html2pdf(recript,{
+                            filname:"fees recript.pdf",
+                            jsPDF :{unit:'in', format:"A3"},
+                            class: fun
+
+                        })
+                    }
+                   </script>
+            
+              <%}%>
+            <%-include('footer')%>

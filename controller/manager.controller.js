@@ -5,6 +5,7 @@ const studentfees = require('../model/studentfeesmodel');
 const cloudinary = require('../cloud/cloudinary');
 const managerjwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
+const { name } = require('ejs');
 
 
 // login page
@@ -223,7 +224,6 @@ module.exports.studentdataform = async(req,res)=>{
 module.exports.studentdatapost = async(req,res)=>{
     try {
         console.log(req.body,req.file);
-
         var studentname = req.body.studentname
         var fathername = req.body.fathername
         var studentemailid = req.body.studentemailid
@@ -235,40 +235,47 @@ module.exports.studentdatapost = async(req,res)=>{
         var fees =req.body.fees
         var addmisiondate = req.body.addmisiondate
         var studentpassword = req.body.studentmobile
+        var emailfind = await student.findOne({studentemailid})
 
-        if(req.file){
-            var data = await cloudinary.uploader.upload(req.file.path,{folder:'sos'});
-            var img = data.secure_url
-            var img_id = data.public_id
-        }
-        req.body.img = img
-        req.body.img_id = img_id
-
-        var studentdata = await student.create({
-            studentname,
-            fathername,
-            studentaddress,
-            studentemailid,
-            studentmobile,
-            fathermobile,
-            banchtime,
-            course,
-            studentpassword,
-            fees,
-            addmisiondate,
-            img,
-            img_id
-        })
-
-        if(studentdata){
-            console.log("data add successfully");
-            req.flash('success', 'Data add Successfully')
-            res.redirect('/manager/dashboard');
+        if(emailfind == null){
+            if(req.file){
+                var data = await cloudinary.uploader.upload(req.file.path,{folder:'sos'});
+                var img = data.secure_url
+                var img_id = data.public_id
+            }
+            req.body.img = img
+            req.body.img_id = img_id
+    
+            var studentdata = await student.create({
+                studentname,
+                fathername,
+                studentaddress,
+                studentemailid,
+                studentmobile,
+                fathermobile,
+                banchtime,
+                course,
+                studentpassword,
+                fees,
+                addmisiondate,
+                img,
+                img_id
+            })
+    
+            if(studentdata){
+                console.log("data add successfully");
+                req.flash('success', 'Data add Successfully')
+                res.redirect('/manager/dashboard');
+            }
+            else{
+                req.flash('success', 'Data not add');
+                console.log('data not add');
+                res.redirect('back');
+            }
         }
         else{
-            req.flash('success', 'Data not add');
-            console.log('data not add');
-            res.redirect('back');
+            req.flash('success',"email already exists")
+            res.redirect('back')
         }
         
     } catch (err) {
@@ -381,9 +388,17 @@ module.exports.studentdetails = async(req,res)=>{
         var dd= managerjwt.verify(req.cookies.managerjwt,process.env.key)
         const pro=await manager.findById(dd.id)
         var datastudent = await student.findById(req.params.id)
+        var fees =await studentfees.find({student_id:req.params.id});
+        var last = fees.slice(-1);
+        if(last.length==1){
+            var pendingfees = datastudent.fees-last[0].feesamount
+            console.log(pendingfees,"fsdfwsf");
+            var paidfees = parseInt(datastudent.paidfees) + parseInt(last[0].feesamount)
+        }
         res.render('student-profile',{
             datastudent,
-            pro
+            pro,
+            last
         });
     } catch (err) {
         console.log(err);
@@ -396,7 +411,21 @@ module.exports.studentfees = async(req,res)=>{
         console.log(req.body);
 
         const{feesamount,paymenttype,date}=req.body
+
         var student_id = req.params.id
+        var datastudent = await student.findById(req.params.id)
+
+        var fees =await studentfees.find({student_id:req.params.id});
+        var last = fees.slice(-1);
+
+                var paidfees = parseInt(datastudent.paidfees) + parseInt(req.body.feesamount)
+                console.log(paidfees);
+
+                 var pendingfees = datastudent.fees - paidfees
+                console.log(pendingfees,"fsdfwsf");
+
+            var update = await student.findByIdAndUpdate(req.params.id,{pendingfees,paidfees})
+
         var fees = await studentfees.create({
         feesamount,
         paymenttype,

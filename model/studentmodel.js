@@ -33,6 +33,14 @@ const studentSchema = new mongoose.Schema({
     fees:{
         type:String
     },
+    pendingfees:{
+        type:Number,
+        default:0
+    },
+    paidfees:{
+        type:Number,
+        default:0
+    },
     img:{
         type:String
     },
